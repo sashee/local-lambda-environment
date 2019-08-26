@@ -47,7 +47,7 @@ The solution is to allow the current account to assume that role:
 
 But that is a bad idea to leave it on for production, so the addition of that statement should be switchable.
 
-To see how to emulate a real lambda locally, check out the [example](example).
+To see how to emulate a real lambda locally, check out the [example](examples).
 
 ### How to use
 
