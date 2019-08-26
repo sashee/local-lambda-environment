@@ -1,4 +1,4 @@
 variable "dev_mode" {
-	type = bool
-	default = false
+  type    = bool
+  default = false
 }

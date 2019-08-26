@@ -10,13 +10,13 @@ resource "aws_s3_bucket_object" "object" {
   bucket = "${aws_s3_bucket.bucket.bucket}"
   key    = "index.html"
 
-  content      = "Bucket content"
+  content = "Bucket content"
 }
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
   output_path = "/tmp/lambda.zip"
-	source_dir = "${path.module}/src"
+  source_dir  = "${path.module}/src"
 }
 
 resource "aws_lambda_function" "lambda" {
@@ -29,12 +29,12 @@ resource "aws_lambda_function" "lambda" {
   runtime = "nodejs10.x"
   role    = "${aws_iam_role.lambda_exec.arn}"
 
-	environment {
-		variables = {
-			BUCKET=aws_s3_bucket.bucket.id
-			KEY=aws_s3_bucket_object.object.id
-		}
-	}
+  environment {
+    variables = {
+      BUCKET = aws_s3_bucket.bucket.id
+      KEY    = aws_s3_bucket_object.object.id
+    }
+  }
 }
 
 data "aws_iam_policy_document" "lambda_exec_role_policy" {
@@ -48,10 +48,10 @@ data "aws_iam_policy_document" "lambda_exec_role_policy" {
       "arn:aws:logs:*:*:*"
     ]
   }
-	statement {
-		actions = ["s3:GetObject"]
-		resources = ["${aws_s3_bucket.bucket.arn}/*"]
-	}
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.bucket.arn}/*"]
+  }
 }
 
 resource "aws_iam_role_policy" "lambda_exec_role" {
@@ -60,10 +60,10 @@ resource "aws_iam_role_policy" "lambda_exec_role" {
 }
 
 module "devmode_assume_role_policy" {
-	source = "github.com/sashee/local-lambda-environment"
+  source = "github.com/sashee/local-lambda-environment"
 
-	dev_mode = var.dev_mode
-	policy = <<EOF
+  dev_mode = var.dev_mode
+  policy   = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
