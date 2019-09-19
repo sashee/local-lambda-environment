@@ -56,6 +56,18 @@ module "devmode_assume_role_policy" {
   source = "github.com/sashee/local-lambda-environment"
 
   dev_mode = var.dev_mode
+}
+
+resource "aws_iam_role" "lambda_exec" {
+  assume_role_policy = module.devmode_assume_role_policy.policy
+}
+```
+
+Whenever ```devmode``` is true the extra statement is appended. When it's false, the assume role policy is left intact.
+
+There is an optional ```policy``` property if you don't want to use the default:
+
+```terraform
   policy   = <<EOF
 {
   "Version": "2012-10-17",
@@ -70,11 +82,4 @@ module "devmode_assume_role_policy" {
   ]
 }
 EOF
-}
-
-resource "aws_iam_role" "lambda_exec" {
-  assume_role_policy = module.devmode_assume_role_policy.policy
-}
 ```
-
-Whenever ```devmode``` is true the extra statement is appended. When it's false, the assume role policy is left intact.

@@ -63,20 +63,6 @@ module "devmode_assume_role_policy" {
   source = "github.com/sashee/local-lambda-environment"
 
   dev_mode = var.dev_mode
-  policy   = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
 }
 
 resource "aws_iam_role" "lambda_exec" {
