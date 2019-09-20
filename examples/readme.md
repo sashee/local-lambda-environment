@@ -23,7 +23,7 @@ Observe that the Bucket's content is printed.
 ### Run it locally
 
 * ```terraform apply -var 'dev_mode=true'```
-* ```./run.sh aws_lambda_function.lambda "node src/index.js"```
+* ```./run.sh lambda "node src/index.js"```
 * navigate to [http://localhost:3000](http://localhost:3000)
 
 Observe that the Bucket's content is printed.
