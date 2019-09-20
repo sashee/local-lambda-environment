@@ -4,8 +4,9 @@ This is a demonstartion project to show how to emulate the real lambda environme
 
 * fetching the environment variables the lambda functions gets
 * using the role that is assigned to the function
+* the region
 
-In effect, you don't need to deploy every time you want to see a change. Your local environment will use the same resources and the same role the real lambda will.
+In effect, you don't need to deploy every time you want to see a change. Your local environment will use the same resources and the same role the real lambda does.
 
 ### Infrastructure
 
