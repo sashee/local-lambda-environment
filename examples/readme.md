@@ -2,9 +2,9 @@
 
 This is a demonstartion project to show how to emulate the real lambda environment variables locally. This takes care of:
 
-* fetching the environment variables the lambda functions gets
+* fetching the environment variables the lambda functions gets from Terraform
 * using the role that is assigned to the function
-* the region
+* setting the region
 
 In effect, you don't need to deploy every time you want to see a change. Your local environment will use the same resources and the same role the real lambda does.
 
