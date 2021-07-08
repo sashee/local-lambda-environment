@@ -26,7 +26,7 @@ resource "aws_lambda_function" "lambda" {
   source_code_hash = "${data.archive_file.lambda_zip.output_base64sha256}"
 
   handler = "main.handler"
-  runtime = "nodejs10.x"
+  runtime = "nodejs14.x"
   role    = "${aws_iam_role.lambda_exec.arn}"
 
   environment {
@@ -100,7 +100,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
 resource "aws_api_gateway_deployment" "deployment" {
   depends_on = [
-    "aws_api_gateway_integration.lambda",
+    aws_api_gateway_integration.lambda,
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
