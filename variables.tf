@@ -1,5 +1,5 @@
 variable "policy" {
-  type = "string"
+  type = string
 	default = <<EOF
 {
   "Version": "2012-10-17",
